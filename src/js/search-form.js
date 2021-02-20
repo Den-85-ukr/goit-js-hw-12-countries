@@ -1,18 +1,17 @@
 import fetchCountries from './fetchCountries';
 import refs from './referals';
 import inputData from './markup';
-
-const debounce = require('lodash.debounce');
+import debounce from 'lodash.debounce';
 
 refs.input.addEventListener('input', debounce(countryInput, 500));
 
 function countryInput() {
-  const countryName = refs.input.value;
+  const countryName = refs.input.value.trim();
 
-  if (countryName === '') {
+  if (!countryName) {
     return;
   }
 
   refs.container.innerHTML = '';
-  fetchCountries(countryName).then(data => inputData(data));
+  fetchCountries(countryName).then(inputData);
 }

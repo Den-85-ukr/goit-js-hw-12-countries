@@ -4,7 +4,7 @@ import refs from './referals';
 import { error, notice, success } from '../js/notification';
 
 function inputData(countries) {
-  if (countries.length === undefined) {
+  if (!countries.length) {
     error({
       title: 'There is no such country!',
       hide: true,
